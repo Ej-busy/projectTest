@@ -1,5 +1,50 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/25423296/163456776-7f95b81a-f1ed-45f7-b7ab-8fa810d529fa.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
-  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
-</picture>
+<html>
+<head>
+    <title>Simple 2D Game</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="500" height="500"></canvas>
+    <script>
+        var canvas = document.getElementById("gameCanvas");
+        var ctx = canvas.getContext("2d");
+
+        var rect = {
+            x: 50,
+            y: 50,
+            width: 50,
+            height: 50,
+            speed: 5
+        };
+
+        document.addEventListener("keydown", function(event) {
+            switch (event.key) {
+                case "ArrowUp":
+                    rect.y -= rect.speed;
+                    break;
+                case "ArrowDown":
+                    rect.y += rect.speed;
+                    break;
+                case "ArrowLeft":
+                    rect.x -= rect.speed;
+                    break;
+                case "ArrowRight":
+                    rect.x += rect.speed;
+                    break;
+            }
+            draw();
+        });
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "blue";
+            ctx.fillRect(rect.x, rect.y, rect.width, rect.height);
+        }
+
+        draw();
+    </script>
+</body>
