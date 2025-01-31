@@ -1,28 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Draw a Circle</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
 
-user_command = ""
-car_started = False 
-while True:
-    user_command = input(">").upper()
-    if user_command == 'HELP':
-        print ("""
-Start - to start the car
-Stop - to stop the car
-Quit - to exit the game
-        """)
-    elif user_command == 'START':
-        if not car_started:
-            print ("Car started.... Ready to go!")
-            car_started = True
-        else:
-            print ("Car is already started")
-    elif user_command == 'STOP':
-        if car_started:
-            print ("Car stopped")
-            car_started = False
-        else:
-            print ("Car is already stopped")
-    elif user_command == 'QUIT':
-        break
-    else:
-        print ("I dont understand it")
-        
+        // Draw a circle
+        ctx.beginPath();
+        ctx.arc(250, 250, 100, 0, 2 * Math.PI);  // Parameters: x, y, radius, startAngle, endAngle
+        ctx.fillStyle = "blue";  // Fill color
+        ctx.fill();              // Fill the circle
+        ctx.stroke();            // Outline the circle
+    </script>
+</body>
